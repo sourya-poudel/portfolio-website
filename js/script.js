@@ -26,6 +26,7 @@ var typed = new Typed(".typing", {
     "Graphic Designer",
     "Co-Founder",
     "Marketing Head",
+    "Social Activist",
   ],
   typeSpeed: 50,
   BackSpeed: 50,

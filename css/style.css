@@ -693,6 +693,12 @@ h3.my-profession {
   top: 0;
   transition: top 3s ease;
 }
+.portfolio .portfolio-item-innner .portfoliooo-img img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  transition: top 3s ease;
+}
 
 .portfolio .portfolio-item-innner .portfolio-img:hover img {
   top: -190%;

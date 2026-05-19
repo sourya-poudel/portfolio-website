@@ -1,7 +1,7 @@
 
 // Age count
 function age() {
-  const birthDate = new Date("1999-07-25");
+  const birthDate = new Date("2009-01-02");
   const currentDate = new Date();
   var age = currentDate.getFullYear() - birthDate.getFullYear();
 
@@ -21,15 +21,15 @@ age();
 // Typing animation
 var typed = new Typed(".typing", {
   strings: [
-    "CS Student",
-    "Web Developer",
-    "Graphic Designer",
     "Co-Founder",
-    "Marketing Head",
-    "Social Activist",
+    "AI & Robotics Trainer",
+    "Web Developer",
+    "Graphics Specialist",
+    "Public Speaker",
+    "CS Student"
   ],
   typeSpeed: 50,
-  BackSpeed: 50,
+  backSpeed: 50,
   loop: true,
 });
 
@@ -72,10 +72,13 @@ function showSection(element) {
 }
 
 //For Hire me section
-document.querySelector(".hire-me").addEventListener("click", function () {
-  showSection(this);
-  updateNav(this);
-});
+const hireMeBtn = document.querySelector(".hire-me");
+if (hireMeBtn) {
+  hireMeBtn.addEventListener("click", function () {
+    showSection(this);
+    updateNav(this);
+  });
+}
 
 function updateNav(element) {
   for (let i = 0; i < totalNavList; i++) {

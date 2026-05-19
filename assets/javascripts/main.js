@@ -173,11 +173,13 @@ function generateResume() {
 }
 
 // Action executed by clicking on the button => generation of the final PDF CV CV
-resumeButton.addEventListener("click", () => {
-    // Adapt the area of the PDF
-    addScaleCV();
-    // Generate the PDF
-    generateResume();
-    // Remove adaptation after 1 second (you can choose to set more than 1 second if your PDF download time is long)
-    setTimeout(removeScaleCV, 1000);
-});
+if (resumeButton) {
+    resumeButton.addEventListener("click", () => {
+        // Adapt the area of the PDF
+        addScaleCV();
+        // Generate the PDF
+        generateResume();
+        // Remove adaptation after 1 second (you can choose to set more than 1 second if your PDF download time is long)
+        setTimeout(removeScaleCV, 1000);
+    });
+}

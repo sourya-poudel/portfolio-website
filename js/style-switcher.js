@@ -5,7 +5,7 @@ styleSwitcherToggle.addEventListener("click", () => {
 });
 
 // Hide style-switcher
-window.addEventListener("mousewheel", () => {
+window.addEventListener("scroll", () => {
   if (document.querySelector(".style-switcher").classList.contains("open")) {
     document.querySelector(".style-switcher").classList.remove("open");
   }
@@ -27,6 +27,7 @@ function setActiveStyle(color) {
       style.setAttribute("disabled", "true");
     }
   });
+  localStorage.setItem("preferred-color", color);
 }
 
 // Theme light and dark mode
@@ -35,9 +36,21 @@ dayNight.addEventListener("click", () => {
   dayNight.querySelector("i").classList.toggle("fa-sun");
   dayNight.querySelector("i").classList.toggle("fa-moon");
   document.body.classList.toggle("dark");
+  localStorage.setItem("preferred-theme", document.body.classList.contains("dark") ? "dark" : "light");
 });
 
 window.addEventListener("load", () => {
+  const preferredColor = localStorage.getItem("preferred-color") || "color-1";
+  const preferredTheme = localStorage.getItem("preferred-theme") || "dark";
+
+  setActiveStyle(preferredColor);
+
+  if (preferredTheme === "dark") {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+  }
+
   if (document.body.classList.contains("dark")) {
     dayNight.querySelector("i").classList.add("fa-sun");
   } else {

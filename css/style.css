@@ -25,6 +25,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body.dark {
   --bg-black-900: #151515;
   --bg-black-100: #222222;
@@ -88,7 +92,7 @@ ul {
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1160px;
   width: 100%;
   margin: auto;
 }
@@ -142,9 +146,9 @@ ul {
 
 .btn {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 12px 35px;
-  color: white;
+  color: #1f1703;
   border-radius: 40px;
   display: inline-block;
   white-space: nowrap;
@@ -158,7 +162,7 @@ ul {
 }
 
 .shadow-dark {
-  box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
 }
 
 /* Global CSS End */
@@ -373,14 +377,20 @@ h3.my-profession {
   width: 80px;
   border-right: 10px solid var(--skin-color);
   border-bottom: 10px solid var(--skin-color);
-  right: 0px;
-  top: 400px;
+  right: 20px;
+  bottom: -40px;
 }
 
 .home .home-img img {
-  height: 400px;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  height: auto;
   margin: auto;
-  border-radius: 5px;
+  border-radius: 20px;
+  border: 1px solid var(--bg-black-50);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 /* Home End */
@@ -392,6 +402,26 @@ h3.my-profession {
 }
 
 .about .about-content .about-text {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+/* New two-column layout for About */
+.about .about-content .about-left {
+  flex: 0 0 60%;
+  max-width: 60%;
+}
+
+.about .about-content .about-right {
+  flex: 0 0 40%;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about .about-content .personal-info,
+.about .about-content .skills {
   flex: 0 0 100%;
   max-width: 100%;
 }
@@ -414,20 +444,27 @@ h3.my-profession {
 }
 
 .about .about-content .personal-info {
-  flex: 0 0 60%;
-  max-width: 60%;
-  margin-top: 40px;
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.about .about-content .personal-info .personal-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 0;
+  row-gap: 0;
 }
 
 .about .about-content .personal-info .info-item {
-  flex: 0 0 50%;
-  max-width: 50%;
+  flex: 0 0 100%;
+  max-width: 100%;
 }
 
 .about .about-content .personal-info .info-item p {
   font-weight: 600;
   padding: 10px 0;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--text-black-900);
   border-bottom: 1px solid var(--bg-black-50);
 }
@@ -437,6 +474,23 @@ h3.my-profession {
   color: var(--text-black-700);
   margin-left: 4px;
   display: inline-block;
+}
+
+/* Keep label and value aligned; allow value to wrap when needed */
+.about .about-content .personal-info .info-item p {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  column-gap: 8px;
+  align-items: center;
+}
+
+.about .about-content .personal-info .info-item p span {
+  display: block;
+  text-align: left;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  font-size: 13.5px;
+  letter-spacing: -0.1px;
 }
 
 .about .about-content .personal-info .buttons {
@@ -449,9 +503,9 @@ h3.my-profession {
 }
 
 .about .about-content .skills {
-  flex: 0 0 40%;
-  max-width: 40%;
-  margin-top: 40px;
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-top: 10px;
 }
 
 .about .about-content .skills .skills-item {
@@ -933,6 +987,20 @@ h3.my-profession {
     display: block;
     margin-left: 0;
   }
+
+  .about .about-content .personal-info .info-item.email-item p span {
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .about .about-content .about-left,
+  .about .about-content .about-right {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .about .about-content .personal-info .personal-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 990px) {
@@ -988,8 +1056,12 @@ h3.my-profession {
     max-width: 100%;
   }
 
+  .about .about-content .personal-info .personal-info-grid {
+    grid-template-columns: 1fr;
+  }
+
   .btn {
-    margin-top: -20px;
+    margin-top: 0;
     padding: 10px 20px;
   }
 
